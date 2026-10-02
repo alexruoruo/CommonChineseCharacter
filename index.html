@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#14244e">
+<title>识字大冒险 · 汪汪队与奥特曼</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app" class="theme-g1">
+
+  <!-- 首页 -->
+  <section class="screen active" id="screen-home">
+    <header class="home-top">
+      <div class="chip">🦴 <b id="home-bones">0</b></div>
+      <button class="icon-btn" id="btn-settings" title="设置">⚙️</button>
+    </header>
+    <div class="home-wrap">
+      <div class="float-deco d1">⭐</div>
+      <div class="float-deco d2">🚀</div>
+      <div class="float-deco d3">🦴</div>
+      <div class="float-deco d4">⚡</div>
+      <div class="mascot-row">
+        <span class="mascot hero">🦸</span>
+        <span class="zap">⚡</span>
+        <span class="mascot pup">🐕</span>
+      </div>
+      <h1 class="title">识字大冒险</h1>
+      <p class="subtitle">汪汪队出动 · 奥特曼变身 · 打怪识字!</p>
+      <div class="star-bank">🏆 <b id="home-stars">0</b> 星 · ✅ 认识 <b id="home-known">0</b> 字</div>
+      <div class="home-btns">
+        <button class="btn btn-primary btn-big" id="btn-continue">🚀 开始冒险</button>
+        <button class="btn btn-big" id="btn-grade">📚 选择年级</button>
+        <div class="btn-row">
+          <button class="btn btn-half" id="btn-dex">🦸 伙伴图鉴</button>
+          <button class="btn btn-half" id="btn-book">📖 识字本</button>
+        </div>
+      </div>
+      <p class="home-tip" id="home-tip"></p>
+    </div>
+  </section>
+
+  <!-- 选择年级 -->
+  <section class="screen" id="screen-grade">
+    <header class="topbar">
+      <button class="icon-btn" data-nav="home">🏠</button>
+      <div class="topbar-title">选择年级出发</div>
+      <div class="topbar-chip">🦴<span id="grade-bones">0</span></div>
+    </header>
+    <div class="grade-scroll" id="grade-list"></div>
+  </section>
+
+  <!-- 选关地图 -->
+  <section class="screen" id="screen-map">
+    <header class="topbar">
+      <button class="icon-btn" id="btn-map-back">⬅️</button>
+      <div class="topbar-title" id="map-title">选择关卡</div>
+      <div class="topbar-chip">🏆<span id="map-stars">0</span></div>
+    </header>
+    <div class="chapter-tabs" id="chapter-tabs"></div>
+    <div class="level-scroll">
+      <div class="level-grid" id="level-grid"></div>
+      <div class="chapter-hint" id="chapter-hint"></div>
+    </div>
+  </section>
+
+  <!-- 识字本 -->
+  <section class="screen" id="screen-book">
+    <header class="topbar">
+      <button class="icon-btn" data-nav="home">🏠</button>
+      <div class="topbar-title">我的识字本</div>
+      <div class="topbar-chip">📖<span id="book-count">0</span></div>
+    </header>
+    <div class="book-summary">
+      <div class="book-big"><span id="book-known">0</span> <small>字</small></div>
+      <div class="book-sub">已经认识了 / 共 <span id="book-total">0</span> 个字</div>
+      <div class="book-bar"><div class="book-fill" id="book-fill"></div></div>
+    </div>
+    <div class="book-chips" id="book-chips"></div>
+    <div class="book-scroll" id="book-lists"></div>
+  </section>
+
+  <!-- 伙伴图鉴 -->
+  <section class="screen" id="screen-dex">
+    <header class="topbar">
+      <button class="icon-btn" data-nav="home">🏠</button>
+      <div class="topbar-title">伙伴图鉴</div>
+      <div class="topbar-chip">🦴<span id="dex-bones">0</span></div>
+    </header>
+    <div class="dex-scroll">
+      <h4 class="dex-sec-title">🦸 奥特曼伙伴 <span class="cnt" id="dex-hero-cnt"></span></h4>
+      <p class="dex-tip">打败每章最后的 👾 BOSS,就能解锁新伙伴!</p>
+      <div class="dex-grid" id="dex-heroes"></div>
+      <h4 class="dex-sec-title">🐕 汪汪队小队</h4>
+      <p class="dex-tip">答题时狗狗们会来帮你,认字最多的小队最厉害!</p>
+      <div class="dex-grid pups" id="dex-pups"></div>
+    </div>
+  </section>
+
+  <!-- 学一学 -->
+  <section class="screen" id="screen-learn">
+    <header class="topbar">
+      <button class="icon-btn" id="btn-learn-back">⬅️</button>
+      <div class="topbar-title" id="learn-title">第 1 关 · 先学一学</div>
+      <div class="topbar-chip"></div>
+    </header>
+    <p class="learn-tip" id="learn-tip">🐕 汪汪队集合!点一点字卡,听一听、认一认</p>
+    <div class="learn-scroll">
+      <div class="learn-grid" id="learn-grid"></div>
+    </div>
+    <div class="bottom-bar">
+      <button class="btn btn-primary btn-big btn-grow" id="btn-start">都记住啦,出发!🚀</button>
+    </div>
+  </section>
+
+  <!-- 答题 -->
+  <section class="screen" id="screen-play">
+    <header class="topbar">
+      <button class="icon-btn" id="btn-quit">✖️</button>
+      <div class="hearts" id="hearts"></div>
+      <div class="topbar-title small" id="play-num"></div>
+    </header>
+    <div class="energy-wrap">
+      <span class="energy-ico">⚡</span>
+      <div class="energy-bar"><div class="energy-fill" id="energy-fill"></div></div>
+    </div>
+    <div class="boss-banner hidden" id="boss-banner">
+      <span class="boss-emoji" id="boss-emoji">👾</span>
+      <div class="boss-info">
+        <div class="boss-name" id="boss-name">BOSS</div>
+        <div class="boss-hp" id="boss-hp"></div>
+      </div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-text" id="progress-text">1/7</div>
+    </div>
+    <div class="q-area" id="q-area"></div>
+    <div class="opt-area cols-4" id="opt-area"></div>
+    <span class="combo-pop" id="combo-pop"></span>
+  </section>
+
+  <!-- 结算 -->
+  <section class="screen" id="screen-result">
+    <div class="result-scroll">
+      <div class="result-card">
+        <div class="result-emoji" id="result-emoji">🎉</div>
+        <h2 class="result-title" id="result-title">太棒啦!</h2>
+        <div class="big-stars" id="big-stars"></div>
+        <p class="result-msg" id="result-msg"></p>
+        <div class="result-bones" id="result-bones">🦴 +1</div>
+        <div class="hero-reveal hidden" id="result-hero">
+          <div class="hero-card-big" id="hero-card-big">🦸</div>
+          <p class="hero-reveal-msg" id="hero-reveal-msg"></p>
+        </div>
+        <div class="result-label">📖 本关认识的字(点一点听读音)</div>
+        <div class="learned-grid" id="learned-grid"></div>
+        <button class="btn btn-primary btn-big btn-grow" id="btn-next">下一关 ➡️</button>
+        <div class="btn-row">
+          <button class="btn btn-half" id="btn-replay">🔁 再玩一次</button>
+          <button class="btn btn-half" id="btn-result-map">🗺️ 选关</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设置弹窗 -->
+  <div class="modal hidden" id="modal-settings">
+    <div class="modal-card">
+      <h3>⚙️ 设置</h3>
+      <label class="setting-row"><span>🔊 游戏音效</span><input type="checkbox" id="chk-sound" checked></label>
+      <label class="setting-row"><span>🗣️ 汉字朗读</span><input type="checkbox" id="chk-tts" checked></label>
+      <button class="btn btn-danger" id="btn-reset">🗑️ 清除闯关进度</button>
+      <button class="btn btn-primary btn-grow" id="btn-close-settings">好的</button>
+    </div>
+  </div>
+
+  <!-- 退出确认弹窗 -->
+  <div class="modal hidden" id="modal-quit">
+    <div class="modal-card">
+      <h3>🏃 要离开这一关吗?</h3>
+      <p class="modal-msg">离开后本关的答题进度会消失哦</p>
+      <div class="btn-row">
+        <button class="btn btn-half btn-primary" id="btn-quit-no">💪 继续闯关</button>
+        <button class="btn btn-half" id="btn-quit-yes">离开</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti"></div>
+</div>
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
